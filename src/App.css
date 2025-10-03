@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@import "../src//components//lightswind.css";
+body {
+  background-color: #040619 !important;
+  /* // Tailwind's gray-900 */
+  color: #1f2937;
+  font-family: "Inter", sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dark mode (if using a class toggle like <body class="dark">) */
+body.dark {
+  /*  */
+  background-color: #111827;
+  /* // Tailwind's gray-100 */
+  color: #f9fafb;
+}
+@font-face {
+  font-family: "mozilla";
+  src: url("/fonts/mozilla-headline-v1-latin-300.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "montserrat";
+  src: url("/fonts/montserrat-v30-latin-regular.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "montserrat";
+  src: url("/fonts/montserrat-v30-latin-regular.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "montserrat";
+  src: url("/fonts/montserrat-v30-latin-regular.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+.hover-group:hover .hover-path,
+.mouth-hover:hover {
+  fill-opacity: 0.6 !important;
+  cursor: pointer;
+}
+
+.mouth-hover:hover {
+  fill: #a57a7a !important;
+}
+.hand-hover:hover {
+  fill-opacity: 0.2 !important;
+  fill: #4e5454 !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden !important;
+}
+
+.page {
+  background: #f6f6f4
+    url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+  background-size: cover;
+  padding: 20px;
+  font-family: "Merriweather", serif;
+  line-height: 1.6;
+  border-radius: 6px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.storybook .cover {
+  background: linear-gradient(135deg, #2563eb, #1e3a8a);
+  color: #fff;
+  font-family: "Merriweather", serif;
+  font-weight: bold;
+  text-align: center;
+}
+.clipCard {
+  clip-path: path(
+    "M150,0  L245,0  A5,5 0 0 1 250,5 L250,255 A5,5 0 0 1 245,260 L105,260 A5,5 0 0 0 100,265 L100,295 A5,5 0 0 1 95,300 L5,300 A5,5 0 0 1 0,295 L0,55 A5,5 0 0 1 5,50 L145,50 A5,5 0 0 0 150,45 L150,5 A5,5 0 0 1 155,0 Z"
+  );
+}
