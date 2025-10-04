@@ -3,7 +3,7 @@ import { Briefcase, FolderDot, HomeIcon, Menu, Phone, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import LightLamp from "./LightLamp";
-import AdminButton from "./AdminButton";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -13,6 +13,11 @@ const Navbar = () => {
 
   const handleSetActive = (tapName) => {
     setActiveTab(tapName);
+  };
+  const navigate = useNavigate();
+
+  const handleDashboardClick = () => {
+    navigate("/dashboard/overview");
   };
 
   return (
@@ -74,7 +79,12 @@ const Navbar = () => {
             <Menu />
           </button>
           <div className=" hidden sm:block">
-            <AdminButton />
+            <button
+              onClick={handleDashboardClick}
+              className="bg-black text-gray-400   p-2 rounded-3xl"
+            >
+              Dashboard
+            </button>
           </div>
         </div>
       </nav>
@@ -109,7 +119,14 @@ const Navbar = () => {
           <a href="#contact" onClick={closeTab}>
             Contact
           </a>
-          <AdminButton />
+          <div className=" sm:hidden block">
+            <button
+              onClick={handleDashboardClick}
+              className="bg-black text-gray-400   p-2 rounded-3xl"
+            >
+              Dashboard
+            </button>
+          </div>
         </ul>
       </div>
     </div>

@@ -20,7 +20,6 @@ export const useSplitText = (selector, options = {}) => {
         stagger: 0.2, // سرعة ظهور الكلمات وحدة وحدة
         duration: 1,
         scrollTrigger: {
-          markers: true,
           trigger: selector, // هنا الافضل نستخدم نفس الـselector بدل ".aboutMe"
           start: "top center",
           end: "80% center",

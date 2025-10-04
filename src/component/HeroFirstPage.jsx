@@ -3,7 +3,6 @@ import HeroText from "./HeroText";
 import ParallaxBackground from "./ParallaxBackground";
 import { Astronut } from "./Astronut";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 
 const HeroFirstPage = () => {
   return (

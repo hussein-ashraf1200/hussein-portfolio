@@ -36,12 +36,14 @@ const SideBar = () => {
           <CircleArrowLeft />
         </button>
         <h1 className=" hidden sm:block text-[10px]  text-white sm:text-2xl">
-          {" "}
           Dashboard
         </h1>
       </div>
       {/* desktop side bar */}
-      <div className="hidden bg-gray-400  rounded-xl h-screen p-4 sm:block">
+      <div
+        className="hidden bg-gray-400 
+       rounded-xl h-96 p-4 sm:block"
+      >
         {menuItems.map((items) => {
           const isActive = location.pathname === items.path;
           return (
@@ -64,7 +66,10 @@ const SideBar = () => {
       {/* mobile side bar */}
 
       <div className="smallmedia block sm:hidden">
-        <div className=" bg-gray-400 rounded-xl flex flex-col gap-2 items-center w-10  h-screen p-4 ">
+        <div
+          className=" bg-gray-400 rounded-xl flex flex-col 
+        gap-2 items-center w-10  h-96 p-4 "
+        >
           {menuItems.map((item) => {
             const isActive = location.pathname === item.path;
             return (

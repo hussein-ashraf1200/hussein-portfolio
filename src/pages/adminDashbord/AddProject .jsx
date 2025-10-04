@@ -8,6 +8,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { toast } from "react-hot-toast";
+import { useUser } from "@clerk/clerk-react";
 
 const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
@@ -19,6 +20,10 @@ const AddProject = () => {
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [projects, setProjects] = useState([]);
+
+  const { user } = useUser();
+  const allowedEmail = "hussein061200@gmail.com";
+  const userEmail = user?.primaryEmailAddress?.emailAddress;
 
   // Upload image to Cloudinary
   const handleImageUpload = async (file) => {
@@ -70,6 +75,15 @@ const AddProject = () => {
 
   // Save project
   const handleSave = async () => {
+    if (!user) {
+      toast.error("You must be signed in ");
+      return;
+    }
+
+    if (userEmail !== allowedEmail) {
+      toast.error("You are not authorized to add Project ");
+      return;
+    }
     if (!title || !description || !url || !imageFile) {
       toast.error("Please fill in all fields!");
       return;
@@ -111,6 +125,10 @@ const AddProject = () => {
 
   // Delete project
   const handleDelete = async (id) => {
+    if (userEmail !== allowedEmail) {
+      toast.error("You are not authorized to Delete Project ");
+      return;
+    }
     try {
       await deleteDoc(doc(db, "projects", id));
       toast.success("Project deleted successfully!");

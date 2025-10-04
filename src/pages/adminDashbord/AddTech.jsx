@@ -8,6 +8,7 @@ import {
   doc,
 } from "firebase/firestore";
 import toast from "react-hot-toast";
+import { useUser } from "@clerk/clerk-react";
 
 const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
@@ -18,6 +19,10 @@ const AddTech = () => {
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [technologies, setTechnologies] = useState([]);
+
+  const { user } = useUser();
+  const allowedEmail = "hussein061200@gmail.com";
+  const userEmail = user?.primaryEmailAddress?.emailAddress;
 
   // رفع الصورة لـ Cloudinary
   const handleImageUpload = async (file) => {
@@ -67,6 +72,15 @@ const AddTech = () => {
 
   // الحفظ في Firestore
   const handleSave = async () => {
+    if (!user) {
+      toast.error("You must be signed in ");
+      return;
+    }
+
+    if (userEmail !== allowedEmail) {
+      toast.error("You are not authorized to add Tech ");
+      return;
+    }
     if (!techName || !duration || !imageFile) {
       toast.error("Please fill in all required fields ❌");
       return;
@@ -102,6 +116,10 @@ const AddTech = () => {
 
   // Handle Delete
   const handleDelete = async (id) => {
+    if (userEmail !== allowedEmail) {
+      toast.error("You are not authorized to Delete Tech ");
+      return;
+    }
     try {
       await deleteDoc(doc(db, "technologies", id));
       toast.success(" Experience deleted");

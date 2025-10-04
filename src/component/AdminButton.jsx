@@ -4,46 +4,27 @@ import {
   SignedOut,
   SignedIn,
   UserButton,
-  useUser,
-  SignOutButton,
 } from "@clerk/clerk-react";
-import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
 
 const AdminButton = () => {
-  const { user } = useUser();
-  const navigate = useNavigate();
-
-  const handleDashboardClick = () => {
-    const email = user?.primaryEmailAddress?.emailAddress;
-    if (email === "hussein061200@gmail.com") {
-      navigate("/dashboard/overview");
-    } else {
-      toast.success("This Feature is Only for Admin");
-    }
-  };
-
   return (
     <div>
-      {/* if you are not Signed */}
       <SignedOut>
-        <SignInButton redirectUrl="/" />
+        {/* ✅ الزرار نفسه هو child */}
+        <SignInButton afterSignInUrl="/" mode="modal">
+          <button
+            className="p-2 mb-0 text-white
+           font-semibold flex justify-center items-center
+            gap-2 rounded-2xl bg-cyan-600 hover:bg-cyan-800"
+          >
+            Sign in
+          </button>
+        </SignInButton>
       </SignedOut>
 
-      <div className="flex justify-center items-center gap-2.5">
-        {/*to Dashboard*/}
-        <SignedIn>
-          <button
-            onClick={handleDashboardClick}
-            className="bg-black text-gray-400   p-2 rounded-3xl"
-          >
-            Dashboard
-          </button>
-
-          {/* زرار المستخدم وزرار تسجيل الخروج */}
-          <UserButton />
-        </SignedIn>
-      </div>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
     </div>
   );
 };

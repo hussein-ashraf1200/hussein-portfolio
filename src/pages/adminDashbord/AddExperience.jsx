@@ -8,8 +8,14 @@ import {
   doc,
 } from "firebase/firestore";
 import toast from "react-hot-toast";
+import { useUser } from "@clerk/clerk-react";
 
 const AddExperience = () => {
+  const { user } = useUser();
+
+  const allowedEmail = "hussein061200@gmail.com";
+  const userEmail = user?.primaryEmailAddress?.emailAddress;
+
   const [formData, setFormData] = useState({
     company: "",
     position: "",
@@ -29,7 +35,7 @@ const AddExperience = () => {
     } catch (error) {
       console.error("Error saving experience:", error);
 
-      toast.error("Failed to load experiences ❌");
+      toast.error("Failed to load experiences ");
     }
   };
 
@@ -48,8 +54,17 @@ const AddExperience = () => {
 
   // handle save to Firestore
   const handleSave = async () => {
+    if (!user) {
+      toast.error("You must be signed in ");
+      return;
+    }
+
+    if (userEmail !== allowedEmail) {
+      toast.error("You are not authorized to add experience ");
+      return;
+    }
     if (!formData.company || !formData.position || !formData.duration) {
-      toast.error("Please fill in all required fields ❌");
+      toast.error("Please fill in all required fields ");
       return;
     }
 
@@ -77,13 +92,17 @@ const AddExperience = () => {
 
   // Handle Delete
   const handleDelete = async (id) => {
+    if (userEmail !== allowedEmail) {
+      toast.error("You are not authorized to Delete experience ");
+      return;
+    }
     try {
       await deleteDoc(doc(db, "experience", id));
-      toast.success("🗑️ Experience deleted");
+      toast.success(" Experience deleted");
       setExperiences((prev) => prev.filter((exp) => exp.id !== id)); // Optimistic update
     } catch (error) {
       console.error("Error deleting experience:", error);
-      toast.error("Error deleting ❌");
+      toast.error("Error deleting ");
     }
   };
 
