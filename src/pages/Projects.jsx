@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import  { useRef } from "react";
 import ProjectMap from "./adminDashbord/ProjectMap";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 
 const Projects = () => {
@@ -19,7 +20,7 @@ const Projects = () => {
       >
         Projects
       </motion.h2>
-      <div className="cardContainer  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  p-5 gap-4 w-full ">
+      <div className="cardContainer w-full ">
         <ProjectMap />
       </div>
     </div>

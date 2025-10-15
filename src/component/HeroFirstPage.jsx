@@ -21,11 +21,16 @@ const HeroFirstPage = () => {
         className="absolute inset-0"
         style={{ width: "100vw", height: "100vh" }}
       >
-        <Canvas camera={{ position: [0, 1, 3] }}>
-          {/* Suspense بيدي سلاسة عند تحميل الـ3D Models */}
-          <Suspense fallback={null}>
-            <Astronut scale={0.4} position={(0, 2, 0)} />
-          </Suspense>
+        <Canvas
+          camera={{ position: [0, 1, 3] }}
+          onCreated={({ gl }) => {
+            gl.getContext().canvas.addEventListener("webglcontextlost", (e) => {
+              e.preventDefault();
+              console.warn("WebGL context lost");
+            });
+          }}
+        >
+          <Astronut scale={0.4} position={(0, 2, 0)} />
         </Canvas>
       </figure>
     </section>

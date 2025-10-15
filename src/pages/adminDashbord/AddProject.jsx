@@ -145,7 +145,8 @@ const AddProject = () => {
       <h1 className="text-white text-2xl font-semibold mb-6">Add Project</h1>
 
       {/* Form */}
-      <div className="inputs border border-gray-600 p-6 rounded-lg shadow-md bg-gray-900 mb-10">
+      <div className="inputs border border-gray-600 p-6 rounded-lg 
+      shadow-md bg-gray-900 mb-10">
         {/* Title */}
         <div className="flex flex-col w-full mb-4">
           <label className="text-white mb-1" htmlFor="title">
@@ -209,7 +210,8 @@ const AddProject = () => {
         <button
           onClick={handleSave}
           disabled={loading}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md w-full"
+          className="bg-blue-600 hover:bg-blue-800 text-white 
+          font-medium py-2 px-4 rounded-md w-full"
         >
           {loading ? "Saving..." : "Save Project"}
         </button>

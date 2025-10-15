@@ -74,7 +74,7 @@ const Navbar = () => {
         </ul>
 
         {/* login and mobile menu */}
-        <div className="flex justify-center items-center gap-2">
+        <div className="flex justify-center text-white items-center gap-2">
           <button onClick={openTab} className="sm:hidden">
             <Menu />
           </button>
@@ -97,7 +97,7 @@ const Navbar = () => {
                openMenu ? "translate-x-0" : "-translate-x-full"
              }`}
       >
-        <button onClick={closeTab} className="fixed top-4 right-4">
+        <button onClick={closeTab} className="fixed text-white top-4 right-4">
           <X />
         </button>
         <ul className="flex flex-col items-center text-white justify-center gap-3.5  text-lg">

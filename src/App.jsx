@@ -1,29 +1,29 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
 import Navbar from "./component/Navbar";
-import Experience from "./pages/Experience";
-import Contact from "./pages/Contact";
-import Projects from "./pages/Projects";
-import Dashboard from "./pages/Dashboard";
 import { SignIn } from "@clerk/clerk-react";
-import HeroFirstPage from "./component/HeroFirstPage";
-import About from "./pages/About";
-import Hero from "./pages/Hero";
-import Welcome from "./component/Welcome";
-import Tech from "./pages/Tech";
-import MyStory from "./pages/MyStory";
-import Footer from "./pages/Footer";
-import Overview from "./pages/adminDashbord/Overview";
-import AdminExperience from "./pages/adminDashbord/AdminExperience";
-import AdminTech from "./pages/adminDashbord/AdminTech";
-import AdminProject from "./pages/adminDashbord/AdminProject";
-import AddExperience from "./pages/adminDashbord/AddExperience";
-import AddTech from "./pages/adminDashbord/AddTech";
-import AddProject from "./pages/adminDashbord/AddProject ";
-import { Toaster } from "react-hot-toast";
+import React, { Suspense, lazy } from "react";
 
-// import SmokeyCursor from "../src/components/lightswind/smokey-cursor";
+// Lazy imports
+const Home = lazy(() => import("./pages/Home"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Projects = lazy(() => import("./pages/Projects"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+const HeroFirstPage = lazy(() => import("./component/HeroFirstPage"));
+const About = lazy(() => import("./pages/About"));
+const Hero = lazy(() => import("./pages/Hero"));
+const Tech = lazy(() => import("./pages/Tech"));
+const Footer = lazy(() => import("./pages/Footer"));
+const Overview = lazy(() => import("./pages/adminDashbord/Overview"));
+const AdminExperience = lazy(() =>
+  import("./pages/adminDashbord/AdminExperience")
+);
+const AdminTech = lazy(() => import("./pages/adminDashbord/AdminTech"));
+const AdminProject = lazy(() => import("./pages/adminDashbord/AdminProject"));
+const AddExperience = lazy(() => import("./pages/adminDashbord/AddExperience"));
+const AddTech = lazy(() => import("./pages/adminDashbord/AddTech"));
+const AddProject = lazy(() => import("./pages/adminDashbord/AddProject"));
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (

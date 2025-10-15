@@ -11,9 +11,9 @@ const Dashboard = () => {
     >
       <div className="flex justify-end w-full">
         <div className=" flex justify-center items-center">
-          <di className="p-2 mb-0 text-white font-semibold flex  justify-center items-center gap-2 rounded-2xl">
+          <div className="p-2 mb-0 text-white font-semibold flex  justify-center items-center gap-2 rounded-2xl">
             <AdminButton />
-          </di>
+          </div>
         </div>
       </div>
 

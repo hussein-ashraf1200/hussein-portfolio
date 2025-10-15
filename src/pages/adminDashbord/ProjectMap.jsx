@@ -79,13 +79,14 @@ const ProjectMap = () => {
     fetchExperiences();
   }, []);
   return (
-    <div>
+    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-10 mt-10 place-items-center">
       {myproject.map((card) => (
         <div
           key={card.id}
-          className="test flex flex-col mt-10 sm:flex-row items-center justify-around w-full"
+          className="test flex flex-row mt-10 sm:flex-row items-center 
+          justify-around w-full"
         >
-          <div className="relative ">
+          <div className="relative  ">
             <div className="clipCard w-[250px]  h-[300px]">
               <img
                 loading="lazy"
@@ -101,12 +102,12 @@ const ProjectMap = () => {
               className="texts text-center absolute  top-0 w-[145px] h-[45px] rounded-sm bg-gradient-to-br from-neutral-900
                          to-neutral-700 text-white  border-4 border-neutral-800  title flex items-center justify-center"
             >
-              {card.id}
+              {card.title}
             </div>
             <div
               onClick={() => demoHandel(card.URL)}
               className="livedemo absolute right-0 bottom-0 w-[145px] h-[35px] text-white rounded-sm flex 
-    items-center border-4 border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-700 justify-center cursor-pointer active:scale-125 active:bg-gradient-to-br active:from-neutral-800 active:to-neutral-600 transition-all duration-700 ease-in-out"
+              items-center border-4 border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-700 justify-center cursor-pointer active:scale-125 active:bg-gradient-to-br active:from-neutral-800 active:to-neutral-600 transition-all duration-700 ease-in-out"
             >
               Live Demo
             </div>
